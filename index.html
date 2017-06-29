@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Graham</title>
+</head>
+<body>
+<h1>This is Graham visualisation</h1>
+
+<div id="mainContainer" style="display: -webkit-flex">
+    <canvas id="mainCanvas" style="border:1px solid #000000;"></canvas>
+    <figure id="controlPnl" style="border:1px solid #000000; margin:1px"></figure>
+</div>
+<script>
+    var canvas = document.getElementById("mainCanvas");
+    var ctrlPl = document.getElementById("controlPnl");
+
+    function globalResize() {
+        var width = window.innerWidth;
+        var height = window.innerHeight * 0.8;
+
+        canvas.style.margin = "1px";
+        canvas.width = width * 0.75;
+        canvas.height = height;
+
+        ctrlPl.style.width = width * 0.2;
+        ctrlPl.style.height = height;
+    }
+
+    globalResize()
+</script>
+</body>
+</html>
