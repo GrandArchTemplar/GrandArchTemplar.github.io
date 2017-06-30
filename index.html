@@ -8,26 +8,37 @@
 <h1>This is Graham visualisation</h1>
 
 <div id="mainContainer" style="display: -webkit-flex">
-    <canvas id="mainCanvas" style="border:1px solid #000000;"></canvas>
-    <figure id="controlPnl" style="border:1px solid #000000; margin:1px"></figure>
+    <canvas id="mainCanvas" class="normalBordered"></canvas>
+    <canvas id="controlPnl" class="normalBordered"></canvas>
 </div>
 <script>
+    var mainCr = document.getElementById("mainContainer");
     var canvas = document.getElementById("mainCanvas");
     var ctrlPl = document.getElementById("controlPnl");
 
+
+    function styleIt() {
+        var nb = document.getElementsByClassName("normalBordered");
+        Array.prototype.slice.call(nb).forEach(e => {
+            e.style.margin = "1px";
+            e.style.border = "1px solid #000000"
+        });
+    }
+
     function globalResize() {
         var width = window.innerWidth;
-        var height = window.innerHeight * 0.8;
+        var height = window.innerHeight;
 
-        canvas.style.margin = "1px";
         canvas.width = width * 0.75;
-        canvas.height = height;
+        canvas.height = height * 0.8;
 
-        ctrlPl.style.width = width * 0.2;
-        ctrlPl.style.height = height;
+        ctrlPl.width = width * 0.2;
+        ctrlPl.height = height * 0.8;
+
     }
 
     globalResize()
+    styleIt()
 </script>
 </body>
 </html>
