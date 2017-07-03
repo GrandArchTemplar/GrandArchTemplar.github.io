@@ -7,17 +7,38 @@
 <body>
 <h1>This is Graham visualisation</h1>
 
-<div id="mainContainer" style="display: -webkit-flex">
-    <canvas id="mainCanvas" class="normalBordered"></canvas>
-    <canvas id="controlPnl" class="normalBordered"></canvas>
+<div id="mainContainer">
+    <canvas class="normalBordered" id="mainCanvas"></canvas>
+    <div id="buttonContainer" class="normalBordered">
+
+        <button type="button" class="normalButton" id="start">Start</button>
+        <button type="button" class="normalButton" id="pause">Pause</button>
+        <button type="button" class="normalButton" id="stop">Stop</button>
+        <button type="button" class="normalButton" id="hard">Hard</button>
+        <button type="button" class="normalButton" id="mode">Mode</button>
+        <button type="button" class="normalButton" id="next">Next</button>
+        <br>
+        Speed:
+        <input type="range" min="0" max="42" step="0.1" value="21" id="speed" title="Speed">
+
+    </div>
 </div>
+
 <script>
     let mainCr = document.getElementById("mainContainer");
     let canvas = document.getElementById("mainCanvas");
-    let ctrlPl = document.getElementById("controlPnl");
+    let state = new Map();
 
+    function test() {
+        let play = document.getElementById("start");
+        play.style.width = 20;
+        play.style.height = 20;
+
+    }
 
     function styleIt() {
+        mainCr.style.display = "-webkit-flex";
+
         let nb = document.getElementsByClassName("normalBordered");
         Array.prototype.slice.call(nb).forEach(e => {
             e.style.margin = "1px";
@@ -32,13 +53,19 @@
         canvas.width = width * 0.75;
         canvas.height = height * 0.8;
 
-        ctrlPl.width = width * 0.2;
-        ctrlPl.height = height * 0.8;
-
     }
 
-    globalResize();
-    styleIt();
+    
+
+    function init() {
+        state.set("isStarted", false);
+        state.set("isSmooth", false);
+        globalResize();
+        styleIt();
+        test();
+    }
+
+    init();
 </script>
 </body>
 </html>
