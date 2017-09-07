@@ -14,7 +14,7 @@
         <button type="button" class="normalButton" id="start">Start</button>
         <button type="button" class="normalButton" id="pause">Pause</button>
         <button type="button" class="normalButton" id="stop">Stop</button>
-        <button type="button" class="normalButton" id="hard">Hard</button>
+        <button type="button" class="normalButton" id="hard" onclick="redraw(radius + 2)">Hard</button>
         <button type="button" class="normalButton" id="mode">Mode</button>
         <button type="button" class="normalButton" id="next">Next</button>
         <br>
@@ -32,14 +32,16 @@
 </div>
 
 <script>
-    let mainCr = document.getElementById("mainContainer");
-    let canvas = document.getElementById("mainCanvas");
-    let state = new Map();
+    const mainCr = document.getElementById("mainContainer");
+    const canvas = document.getElementById("mainCanvas");
+    const state = new Map();
     const radius = 5;
     const promisedPolygon = new Promise(resolve => {
-        let button = document.getElementById("draw");
+        const button = document.getElementById("draw");
         button.onclick = function () {
-            resolve(generatePoints(radius));
+            new Promise(innerResolve => {
+                innerResolve(resolve(generatePoints(radius)));
+            });
         }
     });
 
@@ -53,6 +55,7 @@
     const pair = (...args) => Object.freeze(args.slice(0, 2));
 
     function generatePoints(r) {
+
         let n = document.forms["input"]["vertexCount"].value;
         let points = new Array(n);
         for (let i = 0; i < n; i++) {
@@ -64,41 +67,50 @@
     }
 
     function initDraw(r) {
-        if (state.get("isClear")) {
-            return;
-        } else {
-            state.set("isClear", true);
-        }
         let drawer = canvas.getContext("2d");
         promisedPolygon.then(p => {
             drawer.beginPath();
             p.forEach(e => {
-                let x = e[0];
-                let y = e[1];
+                const x = e[0];
+                const y = e[1];
                 drawer.moveTo(x + r, y);
                 drawer.arc(x, y, r, 0, 2 * Math.PI);
                 drawer.fillStyle = "grey";
                 drawer.fill();
+                drawer.fillText("x: " + (x | 0) + " y: " + (y | 0), x + 10, y + 5);
             });
             drawer.stroke();
         });
+    }
 
+    function redraw(r) {
+        let drawer = canvas.getContext("2d");
+        promisedPolygon.then(p => {
+            drawer.beginPath();
+            p.forEach(e => {
+                const x = e[0];
+                const y = e[1];
+                drawer.moveTo(x + r, y);
+                drawer.arc(x, y, r, 0, 2 * Math.PI);
+                drawer.fillStyle = "grey";
+                drawer.fill();
+                drawer.fillText("x: " + (x | 0) + " y: " + (y | 0), x + 10, y + 5);
+            });
+            drawer.stroke();
+        });
     }
 
     function styleIt() {
         mainCr.style.display = "-webkit-flex";
-
-        let nb = document.getElementsByClassName("normalBordered");
-        Array.prototype.slice.call(nb).forEach(e => {
+        Array.prototype.slice.call(document.getElementsByClassName("normalBordered")).forEach(e => {
             e.style.margin = "1px";
             e.style.border = "1px solid #000000";
         });
     }
 
     function globalResize() {
-        let width = window.innerWidth;
-        let height = window.innerHeight;
-
+        const width = window.innerWidth;
+        const height = window.innerHeight;
         canvas.width = width * 0.75;
         canvas.height = height * 0.8;
 
@@ -108,7 +120,7 @@
     function init() {
         state.set("isStarted", false);
         state.set("isSmooth", false);
-        state.set("isClear", false);
+
         globalResize();
         styleIt();
         initDraw(radius);
