@@ -1,7 +1,15 @@
-const polygon = function () {
-    document.getElementsByName()
-}();
+import {generate} from "../actions/generator";
+import {deepFreeze} from "../utils/freeze";
 
-function getPolygon() {
-    return polygon;
+const promisedPolygon = new Promise(resolve => {
+    const button = deepFreeze(document.getElementById("draw"));
+    button.onclick = deepFreeze(function () {
+        const p = deepFreeze(generate(radius));
+        resolve(p);
+    })
+});
+
+function getPolygon(buffer) {
+    promisedPolygon.then(p => buffer = p);
+    return buffer;
 }

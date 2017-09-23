@@ -1,4 +1,6 @@
 'use strict';
+//import {pureFor} from "./utils/cycle";
+
 const mainCr = Object.freeze(document.getElementById("mainContainer"));
 const canvas = Object.freeze(document.getElementById("mainCanvas"));
 const state  = Object.freeze(new Map());
@@ -89,15 +91,24 @@ function globalResize() {
 
 }
 
+/*function pureFor(param, predicate, change, body, args) {
+    if (predicate(param)) {
+        return pureFor(change(param), predicate, change, body, body(args));
+    } else {
+        return args;
+    }
+
+}*/
 
 function init() {
     state.set("isStarted", false);
     state.set("isSmooth", false);
-
     globalResize();
     styleIt();
     initDraw(radius);
     test();
+    alert(window.pureFor(0,i => {return i < 3}, i => {return i + 1}, i => {return i + 7}, 0));
+    //pureFor(0,i => {return i < 3}, i => {return i + 1}, i => {return i + 7}, 0)
 }
 
 init();
