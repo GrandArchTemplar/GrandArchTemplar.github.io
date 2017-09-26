@@ -3,19 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Graham</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<div id="mainContainer" class="bordered">
-    <h1 id="title" class="bordered">This is Graham visualisation</h1>
-    <canvas id="canvas" class="bordered"></canvas>
-    <div id="manager" class="bordered">
+<h1>This is Graham visualisation</h1>
+
+<div id="mainContainer">
+    <canvas class="normalBordered" id="mainCanvas"></canvas>
+    <div id="buttonContainer" class="normalBordered">
+
         <button type="button" class="normalButton" id="start">Start</button>
         <button type="button" class="normalButton" id="pause">Pause</button>
         <button type="button" class="normalButton" id="stop">Stop</button>
         <button type="button" class="normalButton" id="hard">Hard</button>
         <button type="button" class="normalButton" id="mode">Mode</button>
         <button type="button" class="normalButton" id="next">Next</button>
+        <br>
+        Speed:
+        <input type="range" min="0" max="42" step="0.1" value="21" id="speed" title="Speed">
         <form name="input">
             Number of Vertex:
             <label>
@@ -23,12 +27,11 @@
             </label><br>
             <input type="button" id="draw" value="Draw">
         </form>
+
     </div>
 </div>
 
-<script src="src/sync/graphics.js"></script>
-<script src="src/sync/polygon.js"></script>
-<script src="src/async/listener.js"></script>
-<script src="src/main.js"></script>
+<script src="src/main.js">
+</script>
 </body>
 </html>
