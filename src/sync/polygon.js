@@ -1,6 +1,7 @@
 let polygon;
 
 function generate(n) {
+    "use strict";
     polygon = [];
     let canvas = document.getElementById("canvas");
     let maxX = canvas.width * 0.9;
@@ -10,10 +11,11 @@ function generate(n) {
     for (let i = 0; i < n; i++) {
         let x = Math.random() * maxX + dX;
         let y = Math.random() * maxY + dY;
-        polygon[i] = [x, y]
+        polygon[i] = [x, y];
     }
 }
 
 function getPolygon() {
+    "use strict";
     return polygon;
 }
