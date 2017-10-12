@@ -11,7 +11,7 @@ function drawPolygon(polygon, r, color) {
 function drawCircle(p, r, color) {
     ctx.beginPath();
     ctx.strokeStyle = color;
-    ctx.arc(...p, r + 2, 0, 2 * Math.PI);
+    ctx.arc(...p, r + 3, 0, 2 * Math.PI);
     ctx.stroke();
 }
 
@@ -33,8 +33,8 @@ function connectPoints([x1, y1], [x2, y2], r, color) {
     drawRoundWithCircle([x2, y2], r, color);
     ctx.beginPath();
     ctx.strokeStyle = color;
-    ctx.arc(...[x1, y1], r + 2, angle, 2 * Math.PI + angle);
-    ctx.arc(...[x2, y2], r + 2, Math.PI + angle, 3 * Math.PI + angle);
+    ctx.arc(...[x1, y1], r + 3, angle, 2 * Math.PI + angle);
+    ctx.arc(...[x2, y2], r + 3, Math.PI + angle, 3 * Math.PI + angle);
     ctx.stroke();
 }
 

@@ -1,5 +1,5 @@
 let canvas = document.getElementById("canvas");
-let innerRadius = 5;
+let innerRadius = 3;
 let backgroundColor = "white";
 function init() {
     "use strict";
@@ -14,7 +14,7 @@ function run() {
     ctx.webkitImageSmoothingEnabled = true;
     let draw = document.getElementById("draw");
     draw.onclick = function() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.clearRect(...[0, 0], ...[canvas.width, canvas.height]);
         window.generate(window.getFormValue());
         window.drawPolygon(window.getPolygon(), innerRadius, "black");
     };

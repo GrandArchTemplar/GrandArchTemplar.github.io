@@ -1,4 +1,3 @@
 function wait() {
-    let next = document.getElementById("next");
-    next.onclick = () => {};
+    setTimeout(function(){return true;},2000);
 }
