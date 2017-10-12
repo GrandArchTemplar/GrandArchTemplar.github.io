@@ -7,6 +7,7 @@ function nextSTop([x, y,...xs]) {
 }
 
 function add(xs, x) {
+    "use strict";
     return [x,...xs];
 }
 

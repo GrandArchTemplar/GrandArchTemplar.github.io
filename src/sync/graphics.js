@@ -9,6 +9,7 @@ function drawPolygon(polygon, r, color) {
 }
 
 function drawCircle(p, r, color) {
+    "use strict";
     ctx.beginPath();
     ctx.strokeStyle = color;
     ctx.arc(...p, r + 3, 0, 2 * Math.PI);
@@ -16,6 +17,7 @@ function drawCircle(p, r, color) {
 }
 
 function drawRound(p, r, color) {
+    "use strict";
     ctx.beginPath();
     ctx.strokeStyle = color;
     ctx.arc(...p, r, 0, 2 * Math.PI);
@@ -24,6 +26,7 @@ function drawRound(p, r, color) {
     ctx.stroke();
 }
 function drawRoundWithCircle(p, r, color) {
+    "use strict";
     drawRound(p, r, color);
     drawCircle(p, r, color);
 }
@@ -40,6 +43,7 @@ function connectPoints([x1, y1], [x2, y2], r, color) {
 
 
 function disconnectPoints(p1, p2, r, firstColor, secondColor) {
+    "use strict";
     for (let i = 0; i < 10; ++i) {
         connectPoints(p1, p2, r, backgroundColor);
     }
