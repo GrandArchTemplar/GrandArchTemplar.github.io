@@ -20,7 +20,7 @@ function run() {
     };
     let mode = document.getElementById("mode");
     mode.onclick = function() {
-        //window.polarSorter(window.getPolygon());
+        window.visualize(window.polarSorter(window.getPolygon()), wait);
         //window.getPolygon().forEach(e => drawCircle(e[0], e[1], innerRadius + 2, "green"));
     };
 }

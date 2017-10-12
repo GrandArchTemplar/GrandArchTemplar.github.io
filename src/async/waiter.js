@@ -1,3 +1,5 @@
 function wait() {
-    setTimeout(function(){return true;},2000);
+    setTimeout(function(){
+        return true;
+        }, 2000);
 }
