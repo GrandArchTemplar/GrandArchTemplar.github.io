@@ -1,16 +1,17 @@
-function sTop([x,...xs]) {
-    return x;
+'use strict'
+
+function sTop ([x]) {
+  return x
 }
 
-function nextSTop([x, y,...xs]) {
-    return y;
+function nextSTop ([ignored, y]) {
+  return y
 }
 
-function add(xs, x) {
-    "use strict";
-    return [x,...xs];
+function add (xs, x) {
+  return [x, ...xs]
 }
 
-function remove([x,...xs]) {
-    return xs;
+function remove ([ignored, ...xs]) {
+  return xs
 }
