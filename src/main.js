@@ -1,5 +1,6 @@
 let canvas = document.getElementById("canvas");
 let innerRadius = 5;
+let backgroundColor = "white";
 function init() {
     "use strict";
     const width = window.innerWidth;
@@ -15,12 +16,12 @@ function run() {
     draw.onclick = function() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         window.generate(window.getFormValue());
-        window.drawPolygon(window.getPolygon(), innerRadius);
+        window.drawPolygon(window.getPolygon(), innerRadius, "black");
     };
     let mode = document.getElementById("mode");
     mode.onclick = function() {
         //window.polarSorter(window.getPolygon());
-        window.getPolygon().forEach(e => drawCircle(e[0], e[1], innerRadius + 2));
+        //window.getPolygon().forEach(e => drawCircle(e[0], e[1], innerRadius + 2, "green"));
     };
 }
 

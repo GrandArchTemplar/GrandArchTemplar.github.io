@@ -1,18 +1,23 @@
-let polarCompare = (a, b) => {
-    let corner1 = Math.atan2(a[1], a[0]);
-    let corner2 = Math.atan2(b[1], b[0]);
+let polarCompare = ([ax, ay], [bx, by]) => {
+    let corner1 = Math.atan2(ay, ax);
+    let corner2 = Math.atan2(by, bx);
     return corner1 - corner2;
 };
 
 
 function polarSorter(points) {
     "use strict";
-    points = points.sort((point1, point2) =>
-        point1[1] < point2[1] ? 1 :
-            (point2[1] < point1[1] ? -1 :
-        (point1[0] < point2[0] ? -1 : 1)));
-    let fixed = points[0];
-    let deb = points.slice(1).map(point => [point[0] - fixed[0], fixed[1] - point[1]]);
-    deb = deb.sort(polarCompare);
-    return [[0, 0],...deb];
+    let [[px, py],...deb] = points.sort(([x1, y1], [x2, y2]) =>
+        y1 < y2 ? 1 : (y2 < y1 ? -1 : x1 - x2));
+    return [[0, 0],...deb
+        .map(([x, y]) => [x - px, py - y])
+        .sort(polarCompare)]
+    .map(([x, y]) => [x + px, py - y]);
 }
+
+function isCounterClockwise([ax, ay], [bx, by], [cx, cy]) {
+    let [ux, uy] = [bx - ax, by - ay];
+    let [vx, vy] = [cx - bx, cy - by];
+    return ux * vy - uy * vx < 0;
+}
+
