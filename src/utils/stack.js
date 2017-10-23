@@ -1,5 +1,3 @@
-"use strict";
-
 function sTop([x]) {
     return x;
 }

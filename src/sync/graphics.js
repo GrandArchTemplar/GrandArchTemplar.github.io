@@ -1,10 +1,8 @@
-let ctx = canvas.getContext("2d");
-
 function drawPolygon(polygon, r, color) {
     "use strict";
     polygon.forEach(([x, y]) => {
         drawRoundWithCircle([x, y], r, color);
-        ctx.fillText("x: " + (x | 0) + " y: " + (y | 0), x + 2 * r, y + r / 2);
+        //ctx.fillText("x: " + (x | 0) + " y: " + (y | 0), x + 2 * r, y + r / 2);
     });
 }
 
@@ -50,4 +48,8 @@ function disconnectPoints(p1, p2, r, firstColor, secondColor) {
     }
     drawRoundWithCircle(p1, r, firstColor);
     drawRoundWithCircle(p2, r, secondColor);
+}
+
+function clearCTX() {
+    ctx.clearRect(...[0, 0], ...[canvas.width, canvas.height]);
 }

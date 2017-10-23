@@ -1,11 +1,24 @@
-let canvas = document.getElementById("canvas");
-let innerRadius = 3;
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+const innerRadius = 3;
+const draw = document.getElementById("draw");
+const start = document.getElementById("start");
+const mode = document.getElementById("mode");
+const pause = document.getElementById("pause");
+const stop = document.getElementById("stop");
+const next = document.getElementById("next");
+
 let backgroundColor = "white";
+let wasSmoothed = false;
+let isPaused = false;
+let polygon = [];
+let smoothMode = false;
 
 function init() {
     "use strict";
     const width = window.innerWidth;
     const height = window.innerHeight;
+
     canvas.width = width * 0.75;
     canvas.height = height * 0.85;
 }
@@ -13,18 +26,40 @@ function init() {
 function run() {
     "use strict";
     ctx.webkitImageSmoothingEnabled = true;
-    let draw = document.getElementById("draw");
-    draw.onclick = function() {
-        ctx.clearRect(...[0, 0], ...[canvas.width, canvas.height]);
+    draw.onclick = () => {
+        clearCTX();
         window.generate(window.getFormValue());
         window.drawPolygon(window.getPolygon(), innerRadius, "black");
     };
-    let mode = document.getElementById("mode");
-    mode.onclick = function() {
-        window.visualize(window.polarSorter(window.getPolygon())).
-            catch(console.error);
+    start.onclick = () => {
+        window
+        .visualize(window.polarSorter(window.getPolygon()))
+        .catch(console.error);
         //window.getPolygon().forEach(e => drawCircle(e[0], e[1], innerRadius + 2, "green"));
     };
+    mode.onclick = () => {
+            smoothMode = !smoothMode;
+        if (!isPaused) {
+            next.click();
+        }
+    };
+    pause.onclick = () => {
+        if (isPaused && wasSmoothed) {
+            isPaused = false;
+            mode.click();
+        }
+        else {
+            isPaused = true;
+            if (smoothMode) {
+                wasSmoothed = true;
+                mode.click();
+            }
+        }
+
+    };
+    stop.onclick = () => {
+        clearCTX();
+    }
 }
 
 init();

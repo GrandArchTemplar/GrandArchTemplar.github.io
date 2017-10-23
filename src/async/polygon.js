@@ -1,4 +1,4 @@
-let polygon;
+
 
 function generate(n) {
     "use strict";

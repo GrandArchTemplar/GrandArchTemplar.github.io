@@ -1,4 +1,4 @@
-let polarCompare = ([ax, ay], [bx, by]) => {
+const polarCompare = ([ax, ay], [bx, by]) => {
     let corner1 = Math.atan2(ay, ax);
     let corner2 = Math.atan2(by, bx);
     return corner1 - corner2;
