@@ -3,7 +3,7 @@ const ctx = canvas.getContext("2d");
 const innerRadius = 3;
 const draw = document.getElementById("draw");
 const start = document.getElementById("start");
-const mode = document.getElementById("mode");
+//const mode = document.getElementById("mode");
 const pause = document.getElementById("pause");
 const stop = document.getElementById("stop");
 const next = document.getElementById("next");
@@ -12,7 +12,7 @@ let backgroundColor = "white";
 let wasSmoothed = false;
 let isPaused = false;
 let polygon = [];
-let smoothMode = false;
+let smoothMode = true;
 
 function init() {
     "use strict";
@@ -37,13 +37,17 @@ function run() {
         .catch(console.error);
         //window.getPolygon().forEach(e => drawCircle(e[0], e[1], innerRadius + 2, "green"));
     };
-    mode.onclick = () => {
+    pause.onclick = () => {
+      smoothMode = !smoothMode;
+      next.click();
+    };
+    /*mode.onclick = () => {
             smoothMode = !smoothMode;
         if (!isPaused) {
             next.click();
         }
-    };
-    pause.onclick = () => {
+    };*/
+    /*pause.onclick = () => {
         if (isPaused && wasSmoothed) {
             isPaused = false;
             mode.click();
@@ -56,7 +60,7 @@ function run() {
             }
         }
 
-    };
+    };*/
     stop.onclick = () => {
         clearCTX();
     }
