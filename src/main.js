@@ -27,11 +27,14 @@ function run() {
     "use strict";
     ctx.webkitImageSmoothingEnabled = true;
     draw.onclick = () => {
+        smoothMode = true;
+        isPaused = true;
         clearCTX();
         window.generate(window.getFormValue());
         window.drawPolygon(window.getPolygon(), innerRadius, "black");
     };
     start.onclick = () => {
+        isPaused = false;
         window
         .visualize(window.polarSorter(window.getPolygon()))
         .catch(console.error);
