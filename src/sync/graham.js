@@ -1,8 +1,4 @@
-const polarCompare = ([ax, ay], [bx, by]) => {
-    let corner1 = Math.atan2(ay, ax);
-    let corner2 = Math.atan2(by, bx);
-    return corner1 - corner2;
-};
+const polarCompare = (;
 
 function polarSorter(points) {
     "use strict";
@@ -10,7 +6,7 @@ function polarSorter(points) {
         y1 < y2 ? 1 : (y2 < y1 ? -1 : x1 - x2));
     return [
         [0, 0],
-        ...deb.map(([x, y]) => [x - px, py - y]).sort(polarCompare)].map(
+        ...deb.map(([x, y]) => [x - px, py - y]).sort([ax, ay], [bx, by]) => Math.atan2(ay, ax) - Math.atan2(by, bx))].map(
         ([x, y]) => [x + px, py - y]);
 }
 
