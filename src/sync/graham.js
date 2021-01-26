@@ -1,4 +1,4 @@
-const polarCompare = (;
+//const polarCompare = (;
 
 function polarSorter(points) {
     "use strict";
