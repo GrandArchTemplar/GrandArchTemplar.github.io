@@ -6,7 +6,7 @@ function polarSorter(points) {
         y1 < y2 ? 1 : (y2 < y1 ? -1 : x1 - x2));
     return [
         [0, 0],
-        ...deb.map(([x, y]) => [x - px, py - y]).sort([ax, ay], [bx, by]) => Math.atan2(ay, ax) - Math.atan2(by, bx)).map(
+        ...deb.map(([x, y]) => [x - px, py - y]).sort(([ax, ay], [bx, by]) => Math.atan2(ay, ax) - Math.atan2(by, bx))].map(
         ([x, y]) => [x + px, py - y]);
 }
 
