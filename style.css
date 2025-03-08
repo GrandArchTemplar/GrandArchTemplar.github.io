@@ -1,0 +1,11 @@
+body {
+  background-color: #444343; /*  here is the color  */
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+  color: #3a3737;
+  font-family: 'Fira Code';
+  font-size: 22px;
+  text-align: center;
+  letter-spacing: 0.06em;
+}
