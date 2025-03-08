@@ -1,9 +1,9 @@
 body {
-  background-color: #444343; /*  here is the color  */
+  background-color: rgb(73, 68, 68); /*  here is the color  */
   margin: 0 auto;
   padding: 0;
   width: 100%;
-  color: #4d4949;
+  color: rgb(94, 122, 126);
   font-family: "Fira Code";
   padding-left: 5%;
   font-size: 22px;
@@ -29,4 +29,8 @@ a:visited {
 }
 a:hover {
   color: rgb(161, 184, 161);
+}
+
+circled_list {
+  list-style-type: circle;
 }
