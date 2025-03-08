@@ -1,0 +1,32 @@
+body {
+  background-color: #444343; /*  here is the color  */
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+  color: #4d4949;
+  font-family: "Fira Code";
+  padding-left: 5%;
+  font-size: 22px;
+  text-align: left;
+  letter-spacing: 0.06em;
+}
+a:link {
+  color: rgb(110, 128, 110);
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:visited {
+  color: rgb(110, 128, 110);
+  background-color: transparent;
+  text-decoration: none;
+}
+#main_list {
+  padding-left: 0;
+}
+#main_list li {
+  display: inline;
+}
+a:hover {
+  color: rgb(161, 184, 161);
+}
