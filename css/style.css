@@ -1,9 +1,9 @@
 body {
-  background-color: rgb(73, 68, 68); /*  here is the color  */
+  background-color: #1d1e23; /*  here is the color  */
   margin: 0 auto;
   padding: 0;
   width: 100%;
-  color: rgb(94, 122, 126);
+  color: #656772;
   font-family: "Fira Code";
   padding-left: 5%;
   font-size: 22px;
@@ -11,13 +11,13 @@ body {
   letter-spacing: 0.06em;
 }
 a:link {
-  color: rgb(110, 128, 110);
+  color: #57463a;
   background-color: transparent;
   text-decoration: none;
 }
 
 a:visited {
-  color: rgb(110, 128, 110);
+  color: #57463a;
   background-color: transparent;
   text-decoration: none;
 }
